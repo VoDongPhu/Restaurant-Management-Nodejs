@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const favouriteRoomSchema = new mongoose.Schema({
+const tableTypeSchema = new mongoose.Schema({
   type: {
     type: String,
     trim: true,
@@ -28,5 +28,5 @@ const favouriteRoomSchema = new mongoose.Schema({
   },
 });
 
-const FavouriteRoom = mongoose.model("FavouriteRooms", favouriteRoomSchema);
-export default FavouriteRoom;
+const TableType = mongoose.model("TableTypes", tableTypeSchema);
+export default TableType;

@@ -3,6 +3,7 @@ import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+
 //register
 export const registerUser = async (req, res) => {
   ///checking if email existed
@@ -43,10 +44,20 @@ export const loginUser = async (req, res) => {
       if(user){
         const check = await bcrypt.compareSync(password,user.password)
         if(check){
-           res.status(200).json({
-            success: true,
-            message: 'Login sucess',
-          });
+          const accessToken = jwt.sign({
+            id: user._id
+          },
+          "restaurantmanagement123",
+          {expiresIn: "10m"})
+
+           res.status(200).json(
+            {
+              success: true,
+              message: 'Login sucess',
+              accessToken
+              
+            }
+          );
         } else {
            res.status(400).json({
             success: false,
@@ -58,11 +69,17 @@ export const loginUser = async (req, res) => {
           success: false,
           message: 'User not found',
       })}
-    const token = await user.getToken();
+      const token = await user.getToken();
     res.send({user,token})
 
   } catch (error) {
-   reject(error)
+    console.log(error);
+    res.status(400).json(
+      {
+        success: false,
+        message: "Lỗi hệ thống.",
+      }
+    )
   }
 }
 

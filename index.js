@@ -25,15 +25,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(upload.array());
 import auth from "./src/routers/auth.routers.js";
 import booking from "./src/routers/booking.routers.js";
-import favouriteRoom from "./src/routers/favouriteRoom.routers.js";
+import tableTyle from "./src/routers/tableType.routers.js"
 import awesomeService from "./src/routers/awesomeService.routers.js";
 import imageGallery from "./src/routers/imageGallery.routers.js";
+import user from "./src/routers/user.routers.js"
+import food from "./src/routers/food.routers.js"
 
 app.use("/auth", auth);
 app.use("/booking", booking);
-app.use("/favouriteRoom", favouriteRoom);
+app.use("/tableType", tableTyle);
 app.use("/awesomeService", awesomeService);
 app.use("/imageGallery", imageGallery);
+app.use("/user", user);
+app.use("/food",food)
+
+
 //db connect()
 connectDB();
 
