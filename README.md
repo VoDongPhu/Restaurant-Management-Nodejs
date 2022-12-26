@@ -1,3 +1,3 @@
-# Resort_Management_NodeJS
+# Restaurant_Management_NodeJS
 
-Back-end app Resort Management
+Back-end app Restaurant Management
